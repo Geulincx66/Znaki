@@ -1,0 +1,60 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main
+{
+
+	public static String firstUp(String s)
+	{
+		String words[] = s.split(" ");
+		String result = "";
+		
+		for (String word : words)
+		{
+			String first = word.substring(0,1);
+			first = first.toUpperCase();
+			result += first + word.substring(1)+" ";
+			
+		}
+			return result;
+		
+	}
+	
+	
+public static void main(String[] args) throws FileNotFoundException
+{
+	
+	File file = new File("plik.txt");
+	Scanner odczyt = new Scanner(file);
+	
+	String line = odczyt.nextLine();
+	
+	
+	System.out.println(firstUp(line));
+	String line2 = firstUp(line);
+	
+	PrintWriter zapis = new PrintWriter("zapis.txt");
+	zapis.println(line2);
+	
+	odczyt.close();
+	zapis.close();
+	
+	
+	
+	
+	
+	}
+}
+
+//String linia = "Jakis tekst.";
+//System.out.println(linia.replace('J', 't')); //Zamieniamy J na t.
+
+//String linia2 = "Jakis inny tekst."; //Zamiana wszystkich liter na wielkie
+//System.out.println(linia2.toUpperCase());
+
+//String linia3 = "Jeszcze jakis inny tekst."; //Zamiana pierwszych liter na wielkie
+//System.out.println(firstUp(linia3));
+
